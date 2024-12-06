@@ -1,5 +1,6 @@
 import cv2
 import numpy as np
+# Python Opencv import
 
 VideoSignal = cv2.VideoCapture(0)
 
@@ -12,6 +13,7 @@ for i in YOLO_net.getUnconnectedOutLayers():
     print(i)
 layer_names = YOLO_net.getLayerNames()
 output_layers = [layer_names[i - 1] for i in YOLO_net.getUnconnectedOutLayers()]
+# Opencv와 YOLO_Tiny 모델 연결
 
 while True:
     ret, frame = VideoSignal.read()
@@ -20,12 +22,13 @@ while True:
     blob = cv2.dnn.blobFromImage(frame, 0.00392, (416, 416), (0, 0, 0), True, crop=False)
     YOLO_net.setInput(blob)
     outs = YOLO_net.forward(output_layers)
-
+    # 영상 송출 준비
     class_ids = []
     confidences = []
     boxes = []
 
     for out in outs:
+    # 영상 송출
         for detection in out:
             scores = detection[5:]
             class_id = np.argmax(scores)
@@ -43,6 +46,7 @@ while True:
                 class_ids.append(class_id)
 
     indexes = cv2.dnn.NMSBoxes(boxes, confidences, 0.45, 0.4)
+    # 감지된 윤곽선 생성
 
     for i in range(len(boxes)):
         if i in indexes:
@@ -54,8 +58,9 @@ while True:
             cv2.putText(frame, label, (x, y - 20), cv2.FONT_ITALIC, 0.5, (255, 255, 255), 1)
 
     cv2.imshow("YOLOv3", frame)
-
+    # YOLO모델 연결
     if cv2.waitKey(100) > 0:
+        # 일정 대기시간 이상이면 연결 해제
         break
 
 VideoSignal.release()
