@@ -1,8 +1,10 @@
 # Soongsil Univ, AI Convergence.
 # 프로그래밍 및 실습2
-### Project 사랑의 학식핑 v0.0.1 (2024.11.11 released, 2024.11.11 updated.)
-> v0.0.1 변경점.
->> + ***Hello,  C Project!***
+### Project 사랑의 학식핑 v0.0.1 (2024.11.11 released, 2024.12.06 updated.)
+> v1.0.0 변경점.
+>> + C++ 환경에 Python Embedding
+>> + Python_code.py File 읽기
+>> + **[yolo v5 기반 음식 탐지 모델](https://github.com/skylake2002/Yolo_FoodDeteced)** 적용
 
 
 Other Project **[SSU_lms](https://github.com/Stardust322/SSU_LMS)** 
