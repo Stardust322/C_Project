@@ -4,12 +4,13 @@ import torch
 import pathlib
 import warnings
 warnings.filterwarnings("ignore", category=FutureWarning)
-print("Embedding Python...")
+
 temp = pathlib.PosixPath
 pathlib.PosixPath = pathlib.WindowsPath
 model = torch.hub.load('ultralytics/yolov5', 'custom', path=r"C:\Users\stardust\source\repos\Test\best.pt", force_reload=True)
 url = 'http://192.168.35.80:81/stream' 
 cap = cv2.VideoCapture(url)
+print("Embedding Python...")
 webbrowser.open(url, new=2)
 if not cap.isOpened():
     print("스트리밍 연결 안됨.")
